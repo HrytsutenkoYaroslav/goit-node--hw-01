@@ -15,7 +15,7 @@ const listContacts= async () => {
   const getContactById= async (contactid) => {
     const contacts = await listContacts();
     const result = contacts.find(contact => contact.id === id);
-    return result || null;
+    renode index.js --action="list"turn result || null;
   }
   
   const addContact = async(name, email, phone) => {
@@ -31,7 +31,7 @@ const listContacts= async () => {
 
   const removeContact = async(contactId) => {
     const contacts = await listContacts();
-    const index = books.findIndex(contact => contact.id === id);
+    const index = contacts.findIndex(contact => contact.id === id);
     if(index === -1){
         return null;
     }
