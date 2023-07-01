@@ -10,24 +10,24 @@ program
 program.parse(process.argv);
 
 const argv = program.opts();
-
+const contacts = require("./contacts");
 
 const  invokeAction = async ({ action, id, name, email, phone }) =>{
   switch (action) {
     case 'list':
       const allContacts = await contacts.listContacts();
-            return console.log(allContacts);
+            return console.table(allContacts);
       
     case 'get':
-      const oneContact = await contacts.getById(id);
+      const oneContact = await contacts.getContactById(id);
             return console.log(oneContact);
       
     case 'add':
-      const newContact = await books.add({name, email, phone});
+      const newContact = await contacts.addContact(name, email, phone);
             return console.log(newContact);
 
     case 'remove':
-      const deleteContact = await contacts.deleteById(id);
+      const deleteContact = await contacts.removeContact(id);
             return console.log(deleteContact);
 
     default:
